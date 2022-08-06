@@ -9,14 +9,14 @@ function expressClone() {
   let httpStatusCode = 200;
   let responseType = "text/plain;charset=utf-8";
 
-  const setRoute = (method, uri, func) => {
-    func(reqInterface, resInterface);
-    routes[method].push({ path: uri, data: message });
-  };
-
   const reqInterface = {};
   const resInterface = {
     send: (any) => (message = any),
+  };
+
+  const setRoute = (method, uri, callback) => {
+    callback(reqInterface, resInterface);
+    routes[method].push({ path: uri, data: message });
   };
 
   const lib = {
